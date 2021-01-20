@@ -39,5 +39,6 @@ def delayReport (reportDays,studentInfoList,submitDelay=0.0):
 if __name__ == '__main__':
     studentId = sys.argv[1]
     password = sys.argv[2]
+    days = int(sys.argv[3])
     studentInfoList = [[studentId, password]]
-    delayReport(5,studentInfoList,20) #补报天数,补报延时(s)s
+    delayReport(days,studentInfoList,2) #补报天数,补报延时(s)s
