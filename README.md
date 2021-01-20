@@ -41,7 +41,7 @@
   开启服务后会生成一个专用密码，将该密码记录下来，用于下面的Secrets配置。
 
 ### 3、Secrets 配置
-进入自己 fork 的仓库，点击 Settings-> Secrets-> New Secrets， 添加 1 个 Secrets，其名称为`STUDENTID`，值为自己的学号。它们将作为配置项，在应用启动时传入程序。然后再添加一个Secrets，`STUDENTID`值为自己的密码。
+进入自己 fork 的仓库，点击 Settings-> Secrets-> New Secrets， 添加 1 个 Secrets，其名称为`STUDENTID`，值为自己的学号。它们将作为配置项，在应用启动时传入程序。然后再添加一个Secrets，`PASSWORD`值为自己的密码。
 ![2](./images/2.png)
 
 如果需要发送邮件的话还需要配置下面三个 Secrets：
@@ -63,7 +63,7 @@
 Actions 的执行策略默认是每天0点和16点整触发运行，如果想要设置自己的运行时间，请详见下面**常见问题**
 
 ### 5、运行结束后，会有邮件发送
-
+![9](images/9.png)
 
 ## 常见问题
 
