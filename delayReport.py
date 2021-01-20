@@ -2,12 +2,12 @@ import report
 import random
 import datetime
 import time
+import sys
 
-def delayReport (reportDays,submitDelay=0.0):
+def delayReport (reportDays,studentInfoList,submitDelay=0.0):
     reportData = {"date": "", "temperature": "", "county": "宝山区",
                   "campusLocation": "宝山", "Time_1or2": "1", "location": "具体地址"}
     reportDateList=[]
-    studentInfoList = [["18100000","password"],["18000000","password"] ]
     timeUTC = datetime.datetime.utcnow()
     timeLocal = timeUTC + datetime.timedelta(hours=8)
     reportTime = timeLocal
@@ -37,5 +37,8 @@ def delayReport (reportDays,submitDelay=0.0):
                 time.sleep(submitDelay)
 
 if __name__ == '__main__':
-
-    delayReport(50) #补报天数,补报延时(s)
+    studentId = sys.argv[1]
+    password = sys.argv[2]
+    days = int(sys.argv[3])
+    studentInfoList = [[studentId, password]]
+    delayReport(days,studentInfoList,2) #补报天数,补报延时(s)s
