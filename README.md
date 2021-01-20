@@ -1,5 +1,5 @@
 # SHU_dailyReport
-[toc]
+
 # 项目简介
 
   该项目基于python的request库和bs4库实现上海大学每日一报的自动报送。
@@ -37,7 +37,7 @@
 ### 2、邮箱配置（可选）
 
   github action 实现自动发邮件需要一个配置SMTP服务的邮箱。以配置163邮箱为例，先登录邮箱，点击设置，选择POP3/SMTP/IMAP,然后开启SMTP服务。
- ![1](./images/1.png)
+ ![1](images/1.png)
   开启服务后会生成一个专用密码，将该密码记录下来，用于下面的Secrets配置。
 
 ### 3、Secrets 配置
@@ -129,9 +129,13 @@ schedule: # 定时触发
 ## 参考链接
 
 [GitHub Actions 入门教程](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
+
 [BiliBiliTool](https://github.com/RayWangQvQ/BiliBiliTool)
+
 [GitHub Actions 教程：定时发送天气邮件](http://www.ruanyifeng.com/blog/2019/12/github_actions.html)
+
 [Python实现自动签到脚本](https://blog.csdn.net/ydydyd00/article/details/80882183)
+
 [手动触发 GitHub Actions 的几种方式](https://p3terx.com/archives/github-actions-manual-trigger.html)
 
 
