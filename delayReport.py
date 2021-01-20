@@ -2,6 +2,7 @@ import report
 import random
 import datetime
 import time
+import sys
 
 def delayReport (reportDays,studentInfoList,submitDelay=0.0):
     reportData = {"date": "", "temperature": "", "county": "宝山区",
@@ -36,7 +37,7 @@ def delayReport (reportDays,studentInfoList,submitDelay=0.0):
                 time.sleep(submitDelay)
 
 if __name__ == '__main__':
-    studentId = input()
-    password = input()
+    studentId = sys.argv[1]
+    password = sys.argv[2]
     studentInfoList = [[studentId, password]]
     delayReport(5,studentInfoList,20) #补报天数,补报延时(s)s

@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import base64
 import json
 import random
+import sys
 
 def get_cookies(studentInfo):
     header = {"User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
@@ -100,8 +101,8 @@ def get_FState(reportData):
 
 
 if __name__ == "__main__":
-    studentId = input()
-    password = input()
+    studentId = sys.argv[1]
+    password = sys.argv[2]
     studentInfoList = [[studentId, password]]
     timeUTC = datetime.datetime.utcnow()
     timeLocal = timeUTC + datetime.timedelta(hours=8)
