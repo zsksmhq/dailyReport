@@ -4,44 +4,53 @@ name: daily report
 
 # Controls when the action will run. 
 on:
+  workflow_dispatch: # 手动触发
   # Triggers the workflow on push or pull request events but only for the main branch
-  schedule:
-    - cron: '0 20 * * *'
+  schedule: # 定时触发
+    # cron表达式，时区是UTC时间，比我们早8小时，如下所表示的是每天16点0分
+    - cron: '0 0 * * *'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  build:
+
+    runs-on: ubuntu-latest
+    environment: Production
+
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # 输出IP
+      - name: IP
+        run: sudo curl ifconfig.me
+
+      # 设置服务器时区为东八区 
+      - name: Set time zone
+        run: sudo timedatectl set-timezone 'Asia/Shanghai'
+
+      # 检出
+      - name: Checkout
+        uses: actions/checkout@v2
         
+      # 环境
       - name: 'Set up Python'
         uses: actions/setup-python@v1
         with:
           python-version: 3.7
 
-      # Runs a set of commands using the runners shell
+      # 安装依赖项
       - name: 'Install dependencies'
         run: |
           python -m pip install --upgrade pip
           pip install -r ./requirements.txt
-          
+      
+      # 执行
       - name: 'execute report'
         run: python report.py ${{ secrets.STUDENTID }} ${{ secrets.PASSWORD }}
         
       # 获取格式化的日期并存入GitHub内置的环境变量中
       - name: 'Get Date'
         run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
-        
+      
+      # 发送邮件
       - name: 'Send mail'
         uses: dawidd6/action-send-mail@master
         with:
