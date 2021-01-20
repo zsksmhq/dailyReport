@@ -8,7 +8,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   schedule: # 定时触发
     # cron表达式，时区是UTC时间，比我们早8小时，如下所表示的是16表示的是每天0点0分
-    - cron: '5,0 3,0 * * *'
+    - cron: '24,0 19,0 * * *'
 
 jobs:
 
