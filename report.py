@@ -100,7 +100,9 @@ def get_FState(reportData):
 
 
 if __name__ == "__main__":
-    studentInfoList = [["18100000", "password"], ["18000000", "password"]]
+    studentId = input()
+    password = input()
+    studentInfoList = [[studentId, password]]
     timeUTC = datetime.datetime.utcnow()
     timeLocal = timeUTC + datetime.timedelta(hours=8)
     date = timeLocal.strftime('%Y - %m - %d')
