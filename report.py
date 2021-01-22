@@ -40,10 +40,10 @@ def daily_report(cookie,reportData,delayReport = False):  #最后个参数是补
         "p1$DangQSTZK": "良好",
         "p1$TiWen": reportData["temperature"],
         "p1$ZaiXiao": reportData["campusLocation"],
-        "p1$ddlSheng$Value": "上海",
-        "p1$ddlSheng": "上海",
-        "p1$ddlShi$Value": "上海市",
-        "p1$ddlShi": "上海市",
+        "p1$ddlSheng$Value": "安徽省",
+        "p1$ddlSheng": "安徽省",
+        "p1$ddlShi$Value": "合肥市",
+        "p1$ddlShi": "合肥市",
         "p1$ddlXian$Value": reportData["county"],
         "p1$ddlXian": reportData["county"],
         "p1$FengXDQDL": "否",
@@ -111,8 +111,8 @@ if __name__ == "__main__":
         Time_1or2 = "2"
     else:
         Time_1or2 = "1"
-    reportData = {"date": date, "temperature": "", "county": "宝山区",
-                  "campusLocation": "宝山", "Time_1or2": Time_1or2, "location": "具体地址"}  #county：所在区   cmapusLocation:所在校区
+    reportData = {"date": date, "temperature": "", "county": "合肥市",
+                  "campusLocation": "", "Time_1or2": Time_1or2, "location": "肥东县"}  #county：所在区   cmapusLocation:所在校区
 
     for studentInfo in studentInfoList:
         reportData.update({'temperature':str(round(random.uniform(36, 36.5), 2))})   #随机温度
