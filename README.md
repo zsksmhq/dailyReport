@@ -2,10 +2,10 @@
 
 # 项目简介
 
-  该项目基于python的request库和bs4库实现上海大学每日一报的自动报送。
+  该项目基于python的request库和bs4库实现上海大学在校生**每日两报**的自动报送。
   report.py 用于进行当日报送，可部署于服务器或者GitHub Action来实现每天自动报送。
   delayReport.py 用于一次性补报之前日期，clone到本地直接运行即可。
-
+  **离校生的每日一报还待完成**
 
 # 本地报送和补报
 
@@ -47,7 +47,7 @@
 如果需要发送邮件的话还需要配置下面三个 Secrets：
 
   - MAIL_USERNAME 自动发邮件的邮箱号
-  - MAIL_PASSWORD 自动发邮件的邮箱密码
+  - MAIL_PASSWORD 自动发邮件的邮箱授权密码，就是开通邮箱STMTP服务时记录下来的密码
   - MAIL_BOX 接受邮件的邮箱号
 
 ### 4、手动运行工作流
