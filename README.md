@@ -47,7 +47,7 @@
 如果需要发送邮件的话还需要配置下面三个 Secrets：
 
   - MAIL_USERNAME 自动发邮件的邮箱号
-  - MAIL_PASSWORD 自动发邮件的邮箱密码
+  - MAIL_PASSWORD 自动发邮件的邮箱授权密码，就是开通邮箱STMTP服务时记录下来的密码
   - MAIL_BOX 接受邮件的邮箱号
 
 ### 4、手动运行工作流
