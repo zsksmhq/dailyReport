@@ -17,7 +17,7 @@
 2. 安装依赖的两个python库:request和bs4
 3. 运行delayReport.py补报
    ```python
-   python report.py 学号 密码 补报天数
+   python report_at_school.py 学号 密码 补报天数
    ```
 4. 或者report.py进行当日报送
    ```python
