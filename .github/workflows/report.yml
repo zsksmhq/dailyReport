@@ -45,23 +45,3 @@ jobs:
       # 执行
       - name: 'execute report'
         run: python report.py ${{ secrets.STUDENTID }} ${{ secrets.PASSWORD }}
-        
-      # 获取格式化的日期并存入GitHub内置的环境变量中
-      - name: 'Get Date'
-        run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
-      
-      # 发送邮件
-      - name: 'Send mail'
-        uses: dawidd6/action-send-mail@master
-        with:
-          # 这些是发送邮件需要配置的参数，更多详细的说明请访问具体的仓库
-          server_address: smtp.163.com
-          server_port: 465
-          # 这些secret的环境变量需要配置在setting中的secret下
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: 每日一报 (${{env.REPORT_DATE}})
-          body: file://mail.html
-          to: ${{ secrets.MAIL_BOX }}
-          from: GitHub Actions
-          content_type: text/html
