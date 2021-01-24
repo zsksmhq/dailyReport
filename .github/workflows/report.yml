@@ -61,7 +61,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: 每日一报 (${{env.REPORT_DATE}})
-          body: file://mail.html
+          body: "每日两报 报送成功"
           to: ${{ secrets.MAIL_BOX }}
           from: GitHub Actions
           content_type: text/html
