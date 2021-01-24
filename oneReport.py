@@ -79,8 +79,8 @@ def get_FState(reportData):
     # 转成json格式并保存（方便查看）
     jsonData = json.dumps(
         F_STATE_Former_dict, ensure_ascii=False, separators=(',', ':'))  # dumps：将python字典解码为json数据
-    with open("data/F_State.json", 'w', encoding='utf-8') as f:
-        s = f.write(jsonData)
+    # with open("data/F_State.json", 'w', encoding='utf-8') as f:
+    #     s = f.write(jsonData)
 
     # 更新数据
     F_State_New_dict = {
