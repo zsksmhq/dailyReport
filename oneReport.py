@@ -59,7 +59,6 @@ def daily_report(cookie, reportData, delayReport=False):  # 最后个参数是�
     # application/x-www-form-urlencoded ==最常见的post提交数据的方式，以form表单形式提交数据
     response = requests.post(reportUrl, data=data,
                              cookies=cookie, headers=header)
-    print(response.text)
     return response.text.find("提交成功")
 
 # 更新F_STATE数据
@@ -126,7 +125,6 @@ if __name__ == "__main__":
                   "city": location[1],
                   "county": location[2],
                   "location": location[3]}
-    print(reportData)
     for studentInfo in studentInfoList:
         try:
             cookie = get_cookies(studentInfo)
