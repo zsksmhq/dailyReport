@@ -59,7 +59,7 @@ def daily_report(cookie, reportData, delayReport=False):  # 最后个参数是�
     # application/x-www-form-urlencoded ==最常见的post提交数据的方式，以form表单形式提交数据
     response = requests.post(reportUrl, data=data,
                              cookies=cookie, headers=header)
-
+    print(response.text)
     return response.text.find("提交成功")
 
 # 更新F_STATE数据
@@ -79,13 +79,13 @@ def get_FState(reportData):
     # 转成json格式并保存（方便查看）
     jsonData = json.dumps(
         F_STATE_Former_dict, ensure_ascii=False, separators=(',', ':'))  # dumps：将python字典解码为json数据
-    # with open("data/F_State.json", 'w', encoding='utf-8') as f:
-    #     s = f.write(jsonData)
+    with open("data/F_State.json", 'w', encoding='utf-8') as f:
+        s = f.write(jsonData)
 
     # 更新数据
     F_State_New_dict = {
         "p1_BaoSRQ": {
-            "Text": reportData["date"].replace(" ", "")
+            "Text": reportData["date"]
         },
         "p1_ddlSheng": {
             "SelectedValueArray": [reportData["province"]]
@@ -119,14 +119,14 @@ if __name__ == "__main__":
     # 获取时间
     timeUTC = datetime.datetime.utcnow()
     timeLocal = timeUTC + datetime.timedelta(hours=8)
-    date = timeLocal.strftime('%Y - %m - %d')
+    date = timeLocal.strftime('%Y-%m-%d')
     # 提交的信息
     reportData = {"date": date,
                   "province": location[0],
                   "city": location[1],
                   "county": location[2],
                   "location": location[3]}
-
+    print(reportData)
     for studentInfo in studentInfoList:
         try:
             cookie = get_cookies(studentInfo)
