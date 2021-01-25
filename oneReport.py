@@ -129,7 +129,8 @@ if __name__ == "__main__":
     sender = sys.argv[3]
     password = sys.argv[4]
     receiver = sys.argv[5]
-    semail = email(host,sender,password,receiver,subject_content="每日一报"+str(timeLocal.strftime('%Y-%m-%d %T')))
+    subject_content="每日一报 ({0})".format(timeLocal.strftime('%Y-%m-%d %T'))
+    semail = email(host,sender,password,receiver,subject_content)
     for studentInfo in studentInfoList:
         try:
             cookie = get_cookies(studentInfo)
