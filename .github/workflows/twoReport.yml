@@ -1,13 +1,10 @@
-# This is a basic workflow to help you get started with Actions
+name: daily two report
 
-name: daily report
-
-# Controls when the action will run. 
 on:
   workflow_dispatch: # 手动触发
-  # Triggers the workflow on push or pull request events but only for the main branch
+
   schedule: # 定时触发
-    # cron表达式，时区是UTC时间，比我们早8小时，如下所表示的是16表示的是每天0点0分
+    # cron表达式，时区是UTC时间，比我们早8小时，如下所表示的是0,16表示的是每天0点0分,0,10表示的是每天18点0分
     - cron: '0,0 16,10 * * *'
 
 jobs:
@@ -44,7 +41,7 @@ jobs:
       
       # 执行
       - name: 'execute report'
-        run: python report.py ${{ secrets.STUDENTID }} ${{ secrets.PASSWORD }}
+        run: python twoReport.py ${{ secrets.STUDENTID }} ${{ secrets.PASSWORD }}
         
       # 获取格式化的日期并存入GitHub内置的环境变量中
       - name: 'Get Date'
@@ -60,8 +57,8 @@ jobs:
           # 这些secret的环境变量需要配置在setting中的secret下
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: 每日一报/每日两报 (${{env.REPORT_DATE}})
-          body: "每日一报/每日两报 报送成功"
+          subject: 每日两报 (${{env.REPORT_DATE}})
+          body: "每日两报 报送成功"
           to: ${{ secrets.MAIL_BOX }}
           from: GitHub Actions
           content_type: text/html
