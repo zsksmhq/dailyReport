@@ -12,7 +12,7 @@
    ```
    report_leave_school_BS.main(cookie)
    改成
-   report_at_school.main(cookie)
+   report_leave_school.main(cookie)
  ```
 # 本地报送和补报
 
