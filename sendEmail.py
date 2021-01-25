@@ -10,7 +10,6 @@ from email.mime.multipart import MIMEMultipart  # 负责将多个对象集合起
 from email.mime.text import MIMEText  # 负责构造文本
 from email.header import Header
 
-
 class email(object):
     """封装发送邮件类"""
 

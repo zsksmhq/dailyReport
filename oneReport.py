@@ -126,9 +126,9 @@ if __name__ == "__main__":
                   "location": location[3]}
     # 发送邮件告知
     host="smtp.163.com"
-    sender = sys.argv[3]
-    password = sys.argv[4]
-    receiver = sys.argv[5]
+    sender = sys.argv[4]
+    password = sys.argv[5]
+    receiver = sys.argv[6]
     subject_content="每日一报 ({0})".format(timeLocal.strftime('%Y-%m-%d %T'))
     semail = email(host,sender,password,receiver,subject_content)
     for studentInfo in studentInfoList:
