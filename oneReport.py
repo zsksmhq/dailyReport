@@ -5,8 +5,7 @@ import base64
 import json
 import random
 import sys
-
-
+from sendEmail import email
 # 获取cookies
 def get_cookies(studentInfo):
     header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
@@ -125,6 +124,12 @@ if __name__ == "__main__":
                   "city": location[1],
                   "county": location[2],
                   "location": location[3]}
+    # 发送邮件告知
+    host="smtp.163.com"
+    sender = sys.argv[3]
+    password = sys.argv[4]
+    receiver = sys.argv[5]
+    semail = email(host,sender,password,receiver,subject_content="每日一报")
     for studentInfo in studentInfoList:
         try:
             cookie = get_cookies(studentInfo)
@@ -133,6 +138,9 @@ if __name__ == "__main__":
             continue
         reportSuccess = daily_report(cookie, reportData)
         if (reportSuccess) == -1:
+            semail.addBody(str(studentInfo[0] + "   报送失败"))
             print(str(studentInfo[0] + "   报送失败"))
         else:
+            semail.addBody(str(studentInfo[0] + "   提交成功"))
             print(str(studentInfo[0] + "   提交成功"))
+        semail.send()
