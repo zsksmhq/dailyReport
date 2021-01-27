@@ -10,9 +10,9 @@
   由于学校网站更新太频繁了，用于匹配之前报送信息的正则容易失效，所以报送地址固定为宝山区。  
   如果想报送上次填写的信息的话，在report.py中将
    ```
-   report_leave_school_BS.main(cookie)
+   report_leave_school_BS.main(cookie,location)
    改成
-   report_leave_school.main(cookie)
+   report_leave_school.main(cookie,location)
  ```
 # 本地报送和补报
 
@@ -61,7 +61,7 @@ LOCATION
 添加完后如图所示：
 ![Actions图示](./images/10.png)
 ### 4、手动运行工作流
-都配置好后，请手动开启 Actions，执行一次工作流，验证是否可以正常工作，操作步骤如下图所示：
+都配置好后，请手动开启 Actions，执行一次工作流，验证是否可以正常工作，具体操作步骤如下图所示：
 
 ![Actions图示](./images/3.png)
 
