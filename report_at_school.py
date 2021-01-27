@@ -90,7 +90,7 @@ def get_FState(reportData):
     return  F_State_New
 
 
-def main(cookie):
+def main(cookie,location):
     timeUTC = datetime.datetime.utcnow()
     timeLocal = timeUTC + datetime.timedelta(hours=8)
     date = timeLocal.strftime('%Y - %m - %d')
@@ -100,7 +100,7 @@ def main(cookie):
         Time_1or2 = "1"
     reportData = {"date": date, "temperature": "", "county": "宝山区",
                   "campusLocation": "宝山", "Time_1or2": Time_1or2,
-                  "location": "具体地址"}  # county：所在区   cmapusLocation:所在校区
+                  "location":location}  # county：所在区   cmapusLocation:所在校区
 
     reportSuccess = daily_report(cookie, reportData)
     if (reportSuccess) == -1:

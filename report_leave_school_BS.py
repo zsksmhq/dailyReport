@@ -117,8 +117,8 @@ def get_FState(reportData):
     return F_State_New
 
 
-def main(cookie):
-    detailedLocation = "具体地址"
+def main(cookie, location):
+    detailedLocation = location
     timeUTC = datetime.datetime.utcnow()
     timeLocal = timeUTC + datetime.timedelta(hours=8)
     date = timeLocal.strftime('%Y - %m - %d')

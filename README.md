@@ -24,7 +24,7 @@
 2. 安装依赖库（见requirements.txt)
 3. 运行report.py进行当日报送
    ```python
-   python report.py 学号 密码
+   python report.py 学号 密码 具体地址
    ```
 
 # GitHub Action自动报送
@@ -44,7 +44,12 @@
   开启服务后会生成一个专用密码，将该密码记录下来，用于下面的Secrets配置。
 
 ### 3、Secrets 配置
-进入自己 fork 的仓库，点击 Settings-> Secrets-> New Secrets， 添加 1 个 Secrets，其名称为`STUDENTID`，值为自己的学号。它们将作为配置项，在应用启动时传入程序。然后再添加一个Secrets，`PASSWORD`值为自己的密码。
+进入自己 fork 的仓库，点击 Settings-> Secrets-> New Secrets， 添加三个 Secrets，分别为
+```
+STUDENTID
+PASSWORD
+LOCATION
+```
 ![2](./images/2.png)
 
 如果需要发送邮件的话还需要配置下面三个 Secrets：
@@ -53,6 +58,8 @@
   - MAIL_PASSWORD 自动发邮件的邮箱授权密码，就是开通邮箱STMTP服务时记录下来的密码
   - MAIL_BOX 接受邮件的邮箱号
 
+添加完后如图所示：
+![Actions图示](./images/10.png)
 ### 4、手动运行工作流
 都配置好后，请手动开启 Actions，执行一次工作流，验证是否可以正常工作，操作步骤如下图所示：
 

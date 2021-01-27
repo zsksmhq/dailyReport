@@ -27,6 +27,7 @@ if (__name__ == "__main__"):
     }
     studentId = sys.argv[1]
     password = sys.argv[2]
+    location = sys.argv[3]
     studentInfo = [studentId, password]
     cookie = get_cookies(studentInfo)
     try:
@@ -36,6 +37,6 @@ if (__name__ == "__main__"):
     else:
         response = requests.get(url=url,headers=header,cookies=cookie)  #通过跳转地址是每日一报还是两报来判断是否在校
         if (response.url=="https://selfreport.shu.edu.cn/DayReport.aspx"):
-            report_leave_school_BS.main(cookie)
+            report_leave_school_BS.main(cookie,location)
         elif (response.url==url):
-            report_at_school.main(cookie)
+            report_at_school.main(cookie, location)
