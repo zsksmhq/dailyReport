@@ -1,20 +1,17 @@
 # SHU_dailyReport
 
-**仅供交流学习**  
-感谢YMZLT大佬！！
+**声明：仅供交流学习**  
+
 # 项目简介
 
   该项目基于python的request库和bs4库实现上海大学的自动报送。可部署于服务器或者GitHub Action来实现每天自动报送。  
-
-  - report.py 可自行判断是否在校，离校生的报送信息（地址等）根据上次报送信息填写。由于用到正则匹配之前的报送信息，所以网站信息更新后项目可能会失效。
   - oneReport.py 用于离校以后当天的每日一报；
   - twoReport.py 用于在校生当天的每日两报；
-  - delayReport.py 用于一次性补报之前日期。（目前没法用，会尽快加上）
+  - delayReport.py 用于一次性补报之前日期。
 
-  以上四个脚本文件都可单独运行，可根据需要选择。
+  以上脚本文件都可单独运行，可根据需要选择。
   
   
-
 ## 本地报送和补报
 
 1. 把代码clone到本地
@@ -23,11 +20,8 @@
    https://github.com/zsksmhq/dailyReport.git
    ```
 2. 安装依赖库（见requirements.txt)
-3. 运行report.py进行当日报送
-   ```python
-   python delayReport.py 学号 密码 补报天数
-   ```
-5. 运行OneReport.py进行每日一报当日报送
+
+3. 运行OneReport.py进行每日一报当日报送
    ```python
    python twoReport.py 学号 密码 详细地址
    ```
@@ -37,7 +31,8 @@
    ```python
    python twoReport.py 1812**** 12345678 安徽,合肥市,肥东县,肥东一中
    ```
-6. 运行twoReport.py进行每日两报当日报送
+
+4. 运行twoReport.py进行每日两报当日报送
    ```python
    python twoReport.py 学号 密码
    ```
@@ -79,8 +74,6 @@ github action 实现自动发邮件需要一个配置SMTP服务的邮箱（qq邮
 ![Actions日志图示](./images/4.png)
 ![Actions日志图示](./images/5.png)
 
-
-- report 默认是每天0点和16点整触发运行;
 - oneReport 默认是每天0整触发运行;
 - twoReport 默认是每天0点和16点整触发运行;
 
@@ -93,35 +86,7 @@ github action 实现自动发邮件需要一个配置SMTP服务的邮箱（qq邮
 
 ## 常见问题
 
-### 1、不想接收邮件
-
-不想接收邮件的话，删除.github/workflows中的oneReport.yml或twoReport.yml中下面的部分代码，同时在secrets中不配置邮箱。
-```shell
-# 执行
-      - name: 'execute report'
-        run: python report.py ${{ secrets.STUDENTID }} ${{ secrets.PASSWORD }} ${{ secrets.LOCATION }}
-        
-      # 获取格式化的日期并存入GitHub内置的环境变量中
-      - name: 'Get Date'
-        run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
-      
-      # 发送邮件
-      - name: 'Send mail'
-        uses: dawidd6/action-send-mail@master
-        with:
-          # 这些是发送邮件需要配置的参数，更多详细的说明请访问具体的仓库
-          server_address: smtp.163.com
-          server_port: 465
-          # 这些secret的环境变量需要配置在setting中的secret下
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: 每日一报 (${{env.REPORT_DATE}})
-          body: "每日一报 报送成功"
-          to: ${{ secrets.MAIL_BOX }}
-          from: GitHub Actions
-          content_type: text/html
-```
-### 2、修改运行时间report
+### 1、修改运行时间report
 
 每日任务执行的时间，由.github/workflows中的oneReport.yml或twoReport.yml中的cron表达式指定，每日两报默认为每日的0点整和16点:
 
@@ -163,21 +128,14 @@ schedule: # 定时触发
 │  delayReport.py 补报脚本
 │  oneReport.py 每日一报脚本v2
 │  README.md 说明文档
-│  report.py 自动判断每日一报/每日两报
-│  report_at_school.py 每日两报脚本v1
-│  report_leave_school.py 每日一报脚本v1
 │  request2json.py 将截获的post表单转成json格式
 │  requirements.txt 安装依赖
-│  see_FState.py 用来看fstate值
-│  twoReport.py 每日两报脚本v2
+│  twoReport.py 每日两报脚本
 │
 ├─.github
 │  └─workflows
 │          oneReport.yml 每日一报工作流
-│          report.yml 自动判断每日一报/每日两报工作流
 │          twoReport.yml 每日两报工作流
-│
-├─.idea
 │
 ├─data  
 │      data.json 从报送页面截获的body转成的表单数据
@@ -185,6 +143,7 @@ schedule: # 定时触发
 │      requestBody.txt 从报送页面截获的body
 │
 ├─images 文档图片
+
 ## 参考链接
 
 [GitHub Actions 入门教程](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
