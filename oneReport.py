@@ -78,7 +78,7 @@ def get_FState(reportData):
     jsonData = json.dumps(
         F_STATE_Former_dict, ensure_ascii=False, separators=(',', ':'))  # dumps：将python字典解码为json数据
     with open("data/F_State.json", 'w', encoding='utf-8') as f:
-        s = f.write(jsonData)
+        f.write(jsonData)
 
     # 更新数据
     F_State_New_dict = {
@@ -110,9 +110,12 @@ if __name__ == "__main__":
     # 学生信息
     studentId = sys.argv[1]
     password = sys.argv[2]
-    studentInfoList = [[studentId, password]]
+
     # 地点信息
     location = sys.argv[3].split(',')
+    studentInfoList = [[studentId, password]]
+    
+    
 
     # 获取时间
     timeUTC = datetime.datetime.utcnow()

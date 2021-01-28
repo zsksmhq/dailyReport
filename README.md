@@ -123,8 +123,9 @@ schedule: # 定时触发
 之后要是不需要每天填报了，那进入setting->action->选择Disable Actions for this repository。该仓库的所有的工作流将不再运行。
 如果只停止一个工作流，可以直接在 Actions 中设置：👇
 ![停止运行](./images/10.png)
+
 ## 文件说明
->dailyReport:.
+dailyReport:.
 │  delayReport.py 补报脚本
 │  oneReport.py 每日一报脚本v2
 │  README.md 说明文档
