@@ -24,12 +24,9 @@ def get_cookies(studentInfo):
 
 
 # 提交数据
-def daily_report(cookie, reportData, delayReport=False):  # 最后个参数是补报用的
-
-    if(delayReport == True):
-        reportUrl = "https://selfreport.shu.edu.cn/DayReport.aspx"  # 补报的网址
-    else:
-        reportUrl = "https://selfreport.shu.edu.cn/DayReport.aspx"  # 当天每日一报的网址
+def daily_report(cookie, reportData):
+    
+    reportUrl = "https://selfreport.shu.edu.cn/DayReport.aspx"  # 当天每日一报的网址
 
     # 获取网页基本信息(get)
     header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36",
