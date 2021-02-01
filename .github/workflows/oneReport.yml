@@ -41,7 +41,5 @@ jobs:
       
       # 执行
       - name: 'execute report'
-        run: |
-          python request2json.py
-          python oneReport.py ${{ secrets.STUDENTID }} ${{ secrets.PASSWORD }} ${{ secrets.LOCATION }} ${{ secrets.MAIL_USERNAME }} ${{ secrets.MAIL_PASSWORD }} ${{ secrets.MAIL_BOX }}
+        run: python oneReport.py ${{ secrets.STUDENTID }} ${{ secrets.PASSWORD }} ${{ secrets.LOCATION }} ${{ secrets.MAIL_USERNAME }} ${{ secrets.MAIL_PASSWORD }} ${{ secrets.MAIL_BOX }}
         
