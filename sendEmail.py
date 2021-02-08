@@ -64,13 +64,11 @@ class email(object):
         self.msg.attach(message_image)
 
     def send(self):
-        try:
-            # 4 发送邮件，传递参数1：发件人邮箱地址，参数2：收件人邮箱地址，参数3：把邮件内容格式改为str
-            self.stp.sendmail(self.mail_sender,
+        # 4 发送邮件，传递参数1：发件人邮箱地址，参数2：收件人邮箱地址，参数3：把邮件内容格式改为str
+        self.stp.sendmail(self.mail_sender,
                               self.mail_receivers, self.msg.as_string())
-            # 关闭SMTP对象
-            self.stp.quit()
-            print("邮件发送成功")
-        except self.stp.SMTPException as e:
-            print('error', e)  # 打印错误
+        # 关闭SMTP对象
+        self.stp.quit()
+        print("邮件发送成功")
+
 
