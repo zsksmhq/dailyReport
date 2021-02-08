@@ -15,9 +15,6 @@ jobs:
     environment: ProductionOne
 
     steps:
-      # 输出IP
-      - name: IP
-        run: sudo curl ifconfig.me
 
       # 设置服务器时区为东八区 
       - name: Set time zone
@@ -31,7 +28,7 @@ jobs:
       - name: 'Set up Python'
         uses: actions/setup-python@v1
         with:
-          python-version: 3.x
+          python-version: 3.7
 
       # 安装依赖项
       - name: 'Install dependencies'
