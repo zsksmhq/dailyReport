@@ -14,16 +14,16 @@ def get_cookies(studentInfo):
         }
     loginUrl = "https://newsso.shu.edu.cn/login/eyJ0aW1lc3RhbXAiOjE2MDY2NTA3MzEzODc1NDIzODYsInJlc3BvbnNlVHlwZSI6ImNvZGUiLCJjbGllbnRJZCI6IldVSFdmcm50bldZSFpmelE1UXZYVUNWeSIsInNjb3BlIjoiMSIsInJlZGlyZWN0VXJpIjoiaHR0cHM6Ly9zZWxmcmVwb3J0LnNodS5lZHUuY24vTG9naW5TU08uYXNweD9SZXR1cm5Vcmw9JTJmIiwic3RhdGUiOiIifQ=="
     response = requests.get("https://newsso.shu.edu.cn/static/js/main.js?v=1.0", headers=header)
-    pubkey_str = re.findall("setPublicKey\(\"(.*?)\"\)", response.text)[0]
-    pubkey_str = pubkey_str.replace(r'\n', '\n')                #'\\n'换'\n'
-    '''
-    pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(b"""-----BEGIN PUBLIC KEY-----
+    #pubkey_str = re.findall("setPublicKey\(\"(.*?)\"\)", response.text)[0]
+    #pubkey_str = pubkey_str.replace(r'\n', '\n')                #'\\n'换'\n'
+    
+    pubkey_str = rsa.PublicKey.load_pkcs1_openssl_pem(b"""-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDl/aCgRl9f/4ON9MewoVnV58OL
 OU2ALBi2FKc5yIsfSpivKxe7A6FitJjHva3WpM7gvVOinMehp6if2UNIkbaN+plW
 f5IwqEVxsNZpeixc4GsbY9dXEk3WtRjwGSyDLySzEESH/kpJVoxO7ijRYqU+2oSR
 wTBNePOk1H+LRQokgQIDAQAB
 -----END PUBLIC KEY-----""")
-    '''
+    
     pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(pubkey_str)
     crypto = rsa.encrypt(studentInfo[1].encode('utf8'), pubkey)
     data = {"username": studentInfo[0],
