@@ -17,14 +17,14 @@ def get_cookies(studentInfo):
     #pubkey_str = re.findall("setPublicKey\(\"(.*?)\"\)", response.text)[0]
     #pubkey_str = pubkey_str.replace(r'\n', '\n')                #'\\n'换'\n'
     
-    pubkey_str = rsa.PublicKey.load_pkcs1_openssl_pem(b"""-----BEGIN PUBLIC KEY-----
+    pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(b"""-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDl/aCgRl9f/4ON9MewoVnV58OL
 OU2ALBi2FKc5yIsfSpivKxe7A6FitJjHva3WpM7gvVOinMehp6if2UNIkbaN+plW
 f5IwqEVxsNZpeixc4GsbY9dXEk3WtRjwGSyDLySzEESH/kpJVoxO7ijRYqU+2oSR
 wTBNePOk1H+LRQokgQIDAQAB
 -----END PUBLIC KEY-----""")
     
-    pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(pubkey_str)
+   # pubkey = rsa.PublicKey.load_pkcs1_openssl_pem(pubkey)
     crypto = rsa.encrypt(studentInfo[1].encode('utf8'), pubkey)
     data = {"username": studentInfo[0],
             "password": base64.b64encode(crypto)
