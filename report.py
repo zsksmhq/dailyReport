@@ -45,7 +45,6 @@ if (__name__ == "__main__"):
     password = sys.argv[2]
     location = sys.argv[3]
     studentInfo = [studentId, password]
-    cookie = get_cookies(studentInfo)
     try:
         cookie = get_cookies(studentInfo)
     except:
